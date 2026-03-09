@@ -34,4 +34,38 @@
 
     {% endif %}
 
+    <strong>twin:</strong>
+
+    {% if content %}
+
+    <table>
+
+        <tr>
+
+            <th>twin</th>
+
+            <th>cuh</th>
+
+        </tr>
+
+        {% for twin in content %}
+
+        <tr>
+
+            <td>{{twin.Name}}</td>
+
+            <td>{{twin.Area}}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% else %}
+
+    <strong>No data!!</strong>
+
+    {% endif %}
+
 </body>

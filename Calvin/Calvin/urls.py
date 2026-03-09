@@ -1,8 +1,5 @@
 from django.urls import include, re_path
 import MyApp1.views
-
-
-# Uncomment next two lines to enable admin:
 from django.contrib import admin
 from django.urls import path
 

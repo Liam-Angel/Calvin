@@ -36,6 +36,9 @@
     <Compile Include="Calvin\wsgi.py" />
     <Compile Include="MyApp1\admin.py" />
     <Compile Include="MyApp1\apps.py" />
+    <Compile Include="MyApp1\management\commands\importCSV.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="MyApp1\migrations\__init__.py" />
     <Compile Include="MyApp1\models.py" />
     <Compile Include="MyApp1\tests.py" />
@@ -49,7 +52,9 @@
   <ItemGroup>
     <Folder Include="Calvin\" />
     <Folder Include="MyApp1\" />
+    <Folder Include="MyApp1\management\commands\" />
     <Folder Include="MyApp1\migrations\" />
+    <Folder Include="MyApp1\management\" />
     <Folder Include="MyApp1\templates\" />
     <Folder Include="MyApp1\templates\MyApp1\" />
   </ItemGroup>
