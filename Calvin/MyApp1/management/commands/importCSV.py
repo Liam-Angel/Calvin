@@ -19,11 +19,4 @@ class Command(BaseCommand):
             for row in reader:
                 teacher.objects.create(Name=row[0], Area=row[1])
 
-    def handle(self, *args, **kwargs):
-        path = kwargs['path']
-        with open(path,'rt', encoding='utf-8-sig') as f:
-            reader = csv.reader(f, dialect='excel')
-            for row in reader:
-                twin.objects.create(Name=row[0], Area=row[1])
-
         

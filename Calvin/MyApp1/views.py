@@ -7,9 +7,6 @@ from .models import twin
 # Create your views here.
 def index(request):
    twins = twin.objects.all
-   return render(request,"MyApp1/index.html",{'content': twins})
-
-def index(request):
    teachers = teacher.objects.all
-   return render(request,"MyApp1/index.html",{'content': teachers})
+   return render(request,"MyApp1/index.html",{'content': twins, 'content2': teachers})
  

@@ -1,71 +1,36 @@
 <body>
-
     <strong>Teachers:</strong>
-
-    {% if content %}
-
+    {% if content2 %}
     <table>
-
         <tr>
-
             <th>Name</th>
-
             <th>Teaching Area</th>
-
         </tr>
-
-        {% for teach in content %}
-
+        {% for teach in content2 %}
         <tr>
-
             <td>{{teach.Name}}</td>
-
             <td>{{teach.Area}}</td>
-
         </tr>
-
         {% endfor %}
-
     </table>
-
     {% else %}
-
     <strong>No data!!</strong>
-
     {% endif %}
-
     <strong>twin:</strong>
-
     {% if content %}
-
     <table>
-
         <tr>
-
             <th>twin</th>
-
             <th>cuh</th>
-
         </tr>
-
         {% for twin in content %}
-
         <tr>
-
             <td>{{twin.Name}}</td>
-
             <td>{{twin.Area}}</td>
-
         </tr>
-
         {% endfor %}
-
     </table>
-
     {% else %}
-
     <strong>No data!!</strong>
-
     {% endif %}
-
 </body>
