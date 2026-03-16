@@ -8,5 +8,4 @@ from .models import twin
 def index(request):
    twins = twin.objects.all
    teachers = teacher.objects.all
-   return render(request,"MyApp1/index.html",{'content': twins, 'content2': teachers})
- 
+   return render(request,"MyApp1/index.html",{'content2': twins, 'content': teachers})
