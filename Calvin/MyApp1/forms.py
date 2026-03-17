@@ -6,3 +6,4 @@ class InputForm(forms.ModelForm):
         model = teacher
         fields = ['Name', 'Area']
 
+

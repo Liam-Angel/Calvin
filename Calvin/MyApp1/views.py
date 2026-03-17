@@ -22,8 +22,9 @@ def input_view(request):
             form.save()
     if 'delete' in request.POST:
         id = request.POST.get("delete")
-        entry = teacher.objects.get(id=id)
-        entry.delete()
+        if teacher.objects.filter(id=id).exists():
+            entry = teacher.objects.get(id=id)
+            entry.delete()
 
     if 'back' in request.POST:
         return redirect("index")
