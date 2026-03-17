@@ -25,5 +25,18 @@ def input_view(request):
     else:
      form = InputForm()
     return render(request, "MyApp1/input.html", {"form": form})
+
+def delete_view(request):
+    if 'delete' in request.POST:
+        form = InputForm(request.POST)
+        if form.is_valid():
+            form.save()
+
+    if 'back' in request.POST:
+        return redirect("index")
+
+    else:
+     form = InputForm()
+    return render(request, "MyApp1/input.html", {"form": form})
     
 

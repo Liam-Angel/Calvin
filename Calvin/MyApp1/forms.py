@@ -5,3 +5,8 @@ class InputForm(forms.ModelForm):
     class Meta:
         model = teacher
         fields = ['Name', 'Area']
+
+class DeleteForm(forms.ModelForm):
+    class Meta:
+        model = teacher
+        fields = ['Name', 'Area']

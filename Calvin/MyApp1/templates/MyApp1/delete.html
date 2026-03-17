@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <strong>Teachers:</strong>
+    {% if content2 %}
+    <form action="">
+
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Teaching Area</th>
+            </tr>
+            {% for teach in content %}
+            <tr>
+                <td>{{teach.Name}}</td>
+                <td>{{teach.Area}}</td>
+                <td><button type="submit" name="delete" value="delete" />
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <strong>No data!!</strong>
+        {% endif %}
+    </form>
+
+    </body>
+</html>
