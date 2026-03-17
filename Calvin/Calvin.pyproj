@@ -38,6 +38,7 @@
     <Compile Include="Calvin\wsgi.py" />
     <Compile Include="MyApp1\admin.py" />
     <Compile Include="MyApp1\apps.py" />
+    <Compile Include="MyApp1\forms.py" />
     <Compile Include="MyApp1\management\commands\importCSV.py">
       <SubType>Code</SubType>
     </Compile>
@@ -48,6 +49,7 @@
     <Compile Include="MyApp1\__init__.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="MyApp1\templates\MyApp1\input.html" />
     <Content Include="MyApp1\templates\MyApp1\index.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>

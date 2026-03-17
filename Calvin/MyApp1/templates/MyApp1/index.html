@@ -33,4 +33,22 @@
     {% else %}
     <strong>No data!!</strong>
     {% endif %}
+    <strong>students:</strong>
+    {% if content %}
+    <table>
+        <tr>
+            <th>name</th>
+            <th>course</th>
+        </tr>
+        {% for student in content3 %}
+        <tr>
+            <td>{{student.Name}}</td>
+            <td>{{student.Area}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <strong>No data!!</strong>
+    {% endif %}
+    <p><a href="{% url 'input' %}">Input new Teachers</a></p>
 </body>
