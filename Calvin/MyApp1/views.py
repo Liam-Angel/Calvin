@@ -14,11 +14,16 @@ def index(request):
    return render(request,"MyApp1/index.html",{'content2': twins, 'content': teachers, 'content3': students})
 
 def input_view(request):
-    if request.method == "POST":
+    if 'submit' in request.POST:
         form = InputForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect("index")
+
+    if 'back' in request.POST:
+        return redirect("index")
+
     else:
-        form = InputForm()
+     form = InputForm()
     return render(request, "MyApp1/input.html", {"form": form})
+    
+

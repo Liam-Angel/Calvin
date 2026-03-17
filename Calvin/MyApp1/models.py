@@ -8,8 +8,9 @@ class twin(models.Model):
     Area = models.CharField(max_length=30)
 
 class teacher(models.Model):
-    Name = models.CharField(max_length=25)
-    Area = models.CharField(max_length=30)
+    Name = models.CharField(max_length=25, blank=True)
+    Area = models.CharField(max_length=30, blank=True)
+    
 
 class student(models.Model):
     Name = models.CharField(max_length=25)
