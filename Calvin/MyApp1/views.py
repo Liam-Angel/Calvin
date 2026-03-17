@@ -14,29 +14,20 @@ def index(request):
    return render(request,"MyApp1/index.html",{'content2': twins, 'content': teachers, 'content3': students})
 
 def input_view(request):
+    teachers = teacher.objects.all
+
     if 'submit' in request.POST:
         form = InputForm(request.POST)
         if form.is_valid():
             form.save()
-
-    if 'back' in request.POST:
-        return redirect("index")
-
-    else:
-     form = InputForm()
-    return render(request, "MyApp1/input.html", {"form": form})
-
-def delete_view(request):
     if 'delete' in request.POST:
-        form = InputForm(request.POST)
-        if form.is_valid():
-            form.save()
+        id = request.POST.get("delete")
+        entry = teacher.objects.get(id=id)
+        entry.delete()
 
     if 'back' in request.POST:
         return redirect("index")
-
     else:
-     form = InputForm()
-    return render(request, "MyApp1/input.html", {"form": form})
-    
+        form = InputForm()
+        return render(request, "MyApp1/input.html",{'form': form, 'content': teachers})
 

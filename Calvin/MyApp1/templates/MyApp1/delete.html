@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 
 <html>
-<head>
+<body>
+    <form>
     <strong>Teachers:</strong>
-    {% if content2 %}
-    <form action="">
-
+    {% if content %}
         <table>
             <tr>
                 <th>Name</th>
@@ -22,7 +21,7 @@
         {% else %}
         <strong>No data!!</strong>
         {% endif %}
-    </form>
-
-    </body>
+        <button type="submit" name="back" value="back" />
+        </form>
+</body>
 </html>

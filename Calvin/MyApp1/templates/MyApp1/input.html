@@ -10,6 +10,23 @@
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" name="submit" value="submit">
+        {% if content %}
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Teaching Area</th>
+            </tr>
+            {% for teach in content %}
+            <tr>
+                <td>{{teach.Name}}</td>
+                <td>{{teach.Area}}</td>
+                <td><input type="submit" name="delete" value="{{teach.id}}">
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <strong>No data!!</strong>
+        {% endif %}
         <input type="submit" name="back" value="back">
     </form>
 </body>
