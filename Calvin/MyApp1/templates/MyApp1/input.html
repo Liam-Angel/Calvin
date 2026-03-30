@@ -18,15 +18,21 @@
             </tr>
             {% for teach in content %}
             <tr>
+                {% if {{teach.id}} in removals %}
+                <td style="background-color:powderblue;">{{teach.Name}}</td>
+                <td style="background-color:powderblue;">{{teach.Area}}</td>
+                {% else %}
                 <td>{{teach.Name}}</td>
                 <td>{{teach.Area}}</td>
-                <td><input type="submit" name="delete" value="{{teach.id}}">
+                <td ><input type="submit" name="select" value="{{teach.id}}">
+                {% endif %}
             </tr>
             {% endfor %}
         </table>
         {% else %}
         <strong>No data!!</strong>
         {% endif %}
+        <input type="submit" name="delete">
         <input type="submit" name="back" value="back">
     </form>
 </body>

@@ -16,39 +16,6 @@
     {% else %}
     <strong>No data!!</strong>
     {% endif %}
-    <strong>twin:</strong>
-    {% if content2 %}
-    <table>
-        <tr>
-            <th>twin</th>
-            <th>cuh</th>
-        </tr>
-        {% for twin in content2 %}
-        <tr>
-            <td>{{twin.Name}}</td>
-            <td>{{twin.Area}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% else %}
-    <strong>No data!!</strong>
-    {% endif %}
-    <strong>students:</strong>
-    {% if content3 %}
-    <table>
-        <tr>
-            <th>name</th>
-            <th>course</th>
-        </tr>
-        {% for student in content3 %}
-        <tr>
-            <td>{{student.Name}}</td>
-            <td>{{student.Area}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% else %}
-    <strong>No data!!</strong>
-    {% endif %}
+   
     <p><a href="{% url 'input' %}">Input new Teachers</a></p>
 </body>
