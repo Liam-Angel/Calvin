@@ -51,6 +51,7 @@
   <ItemGroup>
     <Content Include="MyApp1\templates\MyApp1\input.html" />
     <Content Include="MyApp1\templates\MyApp1\index.html" />
+    <Content Include="MyApp1\templates\MyApp1\UnitOutline.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>

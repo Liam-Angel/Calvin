@@ -7,3 +7,4 @@ class InputForm(forms.ModelForm):
         fields = ['Name', 'Area']
 
 
+
