@@ -15,3 +15,7 @@ class teacher(models.Model):
 class student(models.Model):
     Name = models.CharField(max_length=25)
     Area = models.CharField(max_length=30)
+
+class PDF(models.Model):
+    PDF = models.CharField(max_length=25, blank=True)
+    
