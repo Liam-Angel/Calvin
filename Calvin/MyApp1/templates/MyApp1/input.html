@@ -18,15 +18,16 @@
             </tr>
             {% for teach in content %}
             <tr>
-                   <td style="background-color:powderblue;">{{teach.Name}}</td>
-                   <td style="background-color:powderblue;">{{teach.Area}}</td>
-                   <td ><input type="submit" name="select" value="{{teach.id}}">
+                <td style="background-color:powderblue;">{{teach.Name}}</td>
+                <td style="background-color:powderblue;">{{teach.Area}}</td>
+                <td><input type="submit" name="select" value="{{teach.id}}">
             </tr>
             {% endfor %}
         </table>
         {% else %}
         <strong>No data!!</strong>
         {% endif %}
+        <p><a href="{% url 'report'%}">PDF report</a></p>
         <input type="submit" name="delete" value="delete">
         <input type="submit" name="back" value="back">
     </form>
