@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Django Form</title>
+</head>
+<body>
+    <h2>Upload File</h2>
+    <form action="" method="post" autocomplete="off">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" name="back" value="back">
+    </form>
+</body>
+</html>

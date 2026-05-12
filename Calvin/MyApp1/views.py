@@ -15,7 +15,7 @@ from reportlab.platypus import Paragraph,Image,Table
 from django.http import FileResponse 
 from django.contrib.staticfiles.storage import staticfiles_storage 
 from io import BytesIO
-from .forms import UploadFileForm
+from .forms import fileUploadForm
 
 removals = []
 
@@ -107,12 +107,9 @@ def report(request):
 
     return response
 
-def upload_file(request):
-    if request.method == "POST":
-        form = UploadFileForm(request.POST, request.FILES)
-        if form.is_valid():
-            handle_uploaded_file(request.FILES["file"])
-            return HttpResponseRedirect("/success/url/")
+def fileUpload_view(request):
+    if 'back' in request.POST:
+        return redirect("index")
     else:
-        form = UploadFileForm()
-    return render(request, "upload.html", {"form": form})
+        form = fileUploadForm()
+        return render(request, "MyApp1/FileUpload.html",{'form': form,})

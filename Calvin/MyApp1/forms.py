@@ -1,5 +1,6 @@
 from django import forms
 from .models import teacher
+#from .models import fileModel
 from .models import PDF
 
 class InputForm(forms.ModelForm):
@@ -7,10 +8,10 @@ class InputForm(forms.ModelForm):
         model = teacher
         fields = ['Name', 'Area']
 
-class UploadFileForm(forms.Form):
-    title = forms.CharField(max_length=50)
-    file = forms.FileField()
-
+#class FileUploadForm(forms.ModelForm):
+    #class Meta:
+        #model = fileModel
+        #fields = ['Title', 'File']
 
 class pdfr(forms.ModelForm):
     class Meta:
