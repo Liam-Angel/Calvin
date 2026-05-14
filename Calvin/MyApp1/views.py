@@ -8,6 +8,7 @@ from reportlab.pdfgen import canvas
 from .models import teacher
 from .models import twin
 from .models import PDF
+from .models import fileModel
 from .forms import InputForm
 from .forms import pdfr
 from .forms import pdfr
@@ -15,7 +16,7 @@ from reportlab.platypus import Paragraph,Image,Table
 from django.http import FileResponse 
 from django.contrib.staticfiles.storage import staticfiles_storage 
 from io import BytesIO
-from .forms import fileUploadForm
+from .forms import FileUploadForm
 
 removals = []
 
@@ -108,8 +109,21 @@ def report(request):
     return response
 
 def fileUpload_view(request):
+    file = fileModel.objects.all
+    if 'save' in request.POST:
+       form = FileUploadForm(request.POST)
+       if form.is_valid():
+           print('saving')
+           form.save()
+    
+    if 'delete' in request.POST:
+          id = request.POST.get("delete")
+          if fileModel.objects.filter(id=id).exists():
+            entry = fileModel.objects.get(id=id)
+            entry.delete()
+
     if 'back' in request.POST:
         return redirect("index")
     else:
-        form = fileUploadForm()
-        return render(request, "MyApp1/FileUpload.html",{'form': form,})
+        form = FileUploadForm()
+        return render(request, "MyApp1/FileUpload.html",{'form': form, 'file': file})

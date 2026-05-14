@@ -10,6 +10,20 @@
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" name="back" value="back">
+        <input type="submit" name="save" value="save">
+        {% if file %}
+        <table>
+            {% for item in file %}
+            <tr>
+                <td>{{item.Title}}</td>
+                <td>{{item.File}}</td>
+                <td><input type="submit" value="{{item.id}}" name="delete">
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        <strong>No data!!</strong>
+        {% endif %}
     </form>
 </body>
 </html>

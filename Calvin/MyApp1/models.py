@@ -17,8 +17,8 @@ class student(models.Model):
     Area = models.CharField(max_length=30)
 
 class fileModel(models.Model):
-    Title = models.CharField(max_length=25)
-    File = models.FileField(upload_to=None, max_length=254)
+    Title = models.CharField(max_length=25, blank=True)
+    File = models.FileField(upload_to='H:/Programming/Calvin/Calvin/MyApp1/files', blank=True)
 
 class PDF(models.Model):
     PDF = models.CharField(max_length=25, blank=True)
