@@ -9,18 +9,32 @@
     <form action="" method="post" autocomplete="off">
         {% csrf_token %}
         {{ form.as_p }}
-        {{ form2.as_table }}
+
+        <table>
+            <tr>
+                <td>Task</td>
+                <td>DueDate</td>
+                <td>Weight %</td>
+            </tr>
+            <tr>
+                <td>{{form2.Task}}</td>
+                <td>{{form2.DueDate}}</td>
+                <td>{{form2.Weight}}</td>
+            </tr>
+        </table>
         <input type="submit" name="back" value="back">
         <input type="submit" name="save" value="save">
         {% if unit %}
-        <table>
-            {% for item in unit %}
-            <tr>
-                <td>{{item.Unit}}</td>
-                <td><input type="submit" value="{{item.id}}" name="delete">
-            </tr>
-            {% endfor %}
-        </table>
+        {% for item in unit %}
+        <div class="container">
+            <div>{{item.Class}}</div>
+            <div>{{item.Unit}}</div>
+            <div>{{item.Description}}</div>
+            <div>{{item.Assessment}}</div>
+        </div>
+      
+
+        {% endfor %}
         {% else %}
         <strong>No data!!</strong>
         {% endif %}

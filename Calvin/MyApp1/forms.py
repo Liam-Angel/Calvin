@@ -14,7 +14,7 @@ class InputForm(forms.ModelForm):
 class UnitForm(forms.ModelForm):
     class Meta:
         model = units
-        fields = ['Class', 'Unit', 'Description', 'AdditionalInfo']
+        fields = ['Class', 'Unit', 'Description', 'Assessment', 'AdditionalInfo']
 
 class TaskForm(forms.ModelForm):
     class Meta:

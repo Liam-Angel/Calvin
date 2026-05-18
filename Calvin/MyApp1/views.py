@@ -114,6 +114,7 @@ def report(request):
 def fileUpload_view(request):
    unit = units.objects.all
    task = tasks.objects.all
+   assessment = units.Assessment
    if 'save' in request.POST:
       form = UnitForm(request.POST)
       form2 = TaskForm(request.POST)
@@ -144,4 +145,4 @@ def fileUpload_view(request):
    else:
        form = UnitForm()
        form2 = TaskForm
-       return render(request, "myapp1/fileupload.html",{'form': form, 'form2': form2, 'unit': unit, 'task': task})
+       return render(request, "myapp1/fileupload.html",{'form': form, 'form2': form2, 'unit': unit, 'task': task, 'assessment': assessment})
