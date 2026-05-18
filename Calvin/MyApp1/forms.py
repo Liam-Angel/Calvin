@@ -26,5 +26,5 @@ class pdfr(forms.ModelForm):
         model = PDF
         fields = ['PDF']
 
-TaskFormSet = inlineformset_factory(units, tasks, fields=['Task', 'DueDate', 'Weight'], extra=2)
+#TaskFormSet = inlineformset_factory(units, tasks, fields=['Task', 'DueDate', 'Weight'], extra=2)
 

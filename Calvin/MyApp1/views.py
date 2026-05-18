@@ -111,15 +111,18 @@ def report(request):
 
     return response
 
-def fileupload_view(request):
+def fileUpload_view(request):
    unit = units.objects.all
    task = tasks.objects.all
-   if 'save' in request.post:
-      form = UnitForm(request.post)
-      if form.is_valid():
+   if 'save' in request.POST:
+      form = UnitForm(request.POST)
+      form2 = TaskForm(request.POST)
+      if form.is_valid() and form2.is_valid():
           print('saving')
           form.save()
+          form2.save()
     
+
 
    if 'select' in request.POST:
        id = request.POST.get("select")
@@ -135,9 +138,10 @@ def fileupload_view(request):
                 removals2.clear
    
 
-   if 'back' in request.post:
+   if 'back' in request.POST:
        removals2.clear
        return redirect("index")
    else:
        form = UnitForm()
-       return render(request, "myapp1/fileupload.html",{'form': form, 'unit': unit, 'task' : task})
+       form2 = TaskForm
+       return render(request, "myapp1/fileupload.html",{'form': form, 'form2': form2, 'unit': unit, 'task': task})

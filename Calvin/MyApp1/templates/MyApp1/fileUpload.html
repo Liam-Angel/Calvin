@@ -9,6 +9,7 @@
     <form action="" method="post" autocomplete="off">
         {% csrf_token %}
         {{ form.as_p }}
+        {{ form2.as_p }}
         <input type="submit" name="back" value="back">
         <input type="submit" name="save" value="save">
         {% if unit %}
@@ -16,7 +17,6 @@
             {% for item in unit %}
             <tr>
                 <td>{{item.Unit}}</td>
-                <td>{{item.File}}</td>
                 <td><input type="submit" value="{{item.id}}" name="delete">
             </tr>
             {% endfor %}
