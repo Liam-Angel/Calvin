@@ -8,17 +8,19 @@ from reportlab.pdfgen import canvas
 from .models import teacher
 from .models import twin
 from .models import PDF
-from .models import fileModel
+from .models import units
+from .models import tasks
 from .forms import InputForm
-from .forms import pdfr
 from .forms import pdfr
 from reportlab.platypus import Paragraph,Image,Table 
 from django.http import FileResponse 
 from django.contrib.staticfiles.storage import staticfiles_storage 
 from io import BytesIO
-#from .forms import FileUploadForm
+from .forms import UnitForm
+from .forms import TaskForm
 
 removals = []
+removals2 = []
 
 
 # Create your views here.
@@ -46,6 +48,7 @@ def input_view(request):
                 removals.clear
 
     if 'back' in request.POST:
+        removals.clear
         return redirect("index")
     else:
         form = InputForm()
@@ -108,22 +111,33 @@ def report(request):
 
     return response
 
-#def fileUpload_view(request):
-#    file = fileModel.objects.all
-#    if 'save' in request.POST:
-#       form = FileUploadForm(request.POST)
-#       if form.is_valid():
-#           print('saving')
-#           form.save()
+def fileupload_view(request):
+   unit = units.objects.all
+   task = tasks.objects.all
+   if 'save' in request.post:
+      form = UnitForm(request.post)
+      if form.is_valid():
+          print('saving')
+          form.save()
     
-#    if 'delete' in request.POST:
-#          id = request.POST.get("delete")
-#          if fileModel.objects.filter(id=id).exists():
-#            entry = fileModel.objects.get(id=id)
-#            entry.delete()
 
-#    if 'back' in request.POST:
-#        return redirect("index")
-#    else:
-#        form = FileUploadForm()
-#        return render(request, "MyApp1/FileUpload.html",{'form': form, 'file': file})
+   if 'select' in request.POST:
+       id = request.POST.get("select")
+       if teacher.objects.filter(id=id).exists():
+           removals2.append(id)
+
+
+   if 'delete' in request.POST:
+        for item in removals2:
+           if units.objects.filter(id=item).exists():
+                entry = units.objects.get(id=item)
+                entry.delete()
+                removals2.clear
+   
+
+   if 'back' in request.post:
+       removals2.clear
+       return redirect("index")
+   else:
+       form = UnitForm()
+       return render(request, "myapp1/fileupload.html",{'form': form, 'unit': unit, 'task' : task})

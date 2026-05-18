@@ -5,17 +5,17 @@
     <title>Django Form</title>
 </head>
 <body>
-    <h2>Upload File</h2>
+    <h2>Create Unit Outline</h2>
     <form action="" method="post" autocomplete="off">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" name="back" value="back">
         <input type="submit" name="save" value="save">
-        {% if file %}
+        {% if unit %}
         <table>
-            {% for item in file %}
+            {% for item in unit %}
             <tr>
-                <td>{{item.Title}}</td>
+                <td>{{item.Unit}}</td>
                 <td>{{item.File}}</td>
                 <td><input type="submit" value="{{item.id}}" name="delete">
             </tr>
