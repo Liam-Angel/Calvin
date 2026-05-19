@@ -53,7 +53,7 @@
     <Content Include="MyApp1\templates\MyApp1\input.html" />
     <Content Include="MyApp1\templates\MyApp1\index.html" />
     <Content Include="MyApp1\templates\MyApp1\fileUpload.html" />
-    <Content Include="static\meth.pdf" />
+    <Content Include="static\math.pdf" />
     <Content Include="MyApp1\templates\MyApp1\pdfr.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>

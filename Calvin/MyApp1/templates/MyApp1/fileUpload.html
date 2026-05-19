@@ -25,16 +25,17 @@
         <input type="submit" name="back" value="back">
         <input type="submit" name="save" value="save">
         {% if unit %}
-        {% for item in unit %}
-        <div class="container">
-            <div>{{item.Class}}</div>
-            <div>{{item.Unit}}</div>
-            <div>{{item.Description}}</div>
-            <div>{{item.Assessment}}</div>
-        </div>
-      
+            {% for item in unit %}
+            <div class="container">
+                <div>{{item.Class}}</div>
+                <div>{{item.Unit}}</div>
+                <div>{{item.Description}}</div>
+                <div>{{item.Assessment}}</div>
+                <input type="submit" name="delete" value="{{item.id}}">
+            </div>
+        
 
-        {% endfor %}
+            {% endfor %}
         {% else %}
         <strong>No data!!</strong>
         {% endif %}

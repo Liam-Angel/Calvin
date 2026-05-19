@@ -31,7 +31,7 @@ class units(models.Model):
     Unit = models.CharField(max_length=25, blank=True)
     Description = models.CharField(max_length=25, blank=True)
     Assessment = models.ManyToManyField(tasks, blank=True)
-    AdditionalInfo = models.FileField(upload_to='C:/Users/LiamA/source/repos/Liam-Angel/Calvin/Calvin/MyApp1/files/', blank=True)
+    AdditionalInfo = models.FileField(upload_to="C:/Users/LiamA/source/repos/Liam-Angel/CalvinCalvin/MyApp1/files/", blank=True)
 
 
 class PDF(models.Model):

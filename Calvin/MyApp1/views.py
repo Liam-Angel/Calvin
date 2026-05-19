@@ -31,7 +31,7 @@ def index(request):
 
 def input_view(request):
     teachers = teacher.objects.all
-    selected = teacher.objects.filter(id__in=removals)
+    
 
 
     if 'submit' in request.POST:
@@ -42,7 +42,9 @@ def input_view(request):
         id = request.POST.get("select")
         if teacher.objects.filter(id=id).exists():
             removals.append(id)
-            
+
+    selected = teacher.objects.filter(id__in=removals)    
+    
     if 'delete' in request.POST:
         for item in removals:
             if teacher.objects.filter(id=item).exists():
@@ -62,7 +64,7 @@ def pdfr_view(request):
     PDFs = PDF.objects.all
     page
     if 'submit' in request.POST:
-        reader = PdfReader("H:\Programming\Calvin\Calvin\MyApp1\meth.pdf")
+        reader = PdfReader("H:\Programming\Calvin\Calvin\MyApp1\math.pdf")
         page = reader.pages[0]
         print(page.extract_text())
              
@@ -129,18 +131,13 @@ def fileUpload_view(request):
     
 
 
-   if 'select' in request.POST:
-       id = request.POST.get("select")
-       if teacher.objects.filter(id=id).exists():
-           removals2.append(id)
-
-
    if 'delete' in request.POST:
-        for item in removals2:
-           if units.objects.filter(id=item).exists():
-                entry = units.objects.get(id=item)
-                entry.delete()
-                removals2.clear
+       id = request.POST.get("delete")
+       if units.objects.filter(id=id).exists():
+           entry = units.objects.get(id=id)
+           entry.delete()
+
+   
    
 
    if 'back' in request.POST:
