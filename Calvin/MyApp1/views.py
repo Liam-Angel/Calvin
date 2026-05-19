@@ -26,11 +26,14 @@ removals2 = []
 # Create your views here.
 def index(request):
    teachers = teacher.objects.all
+   
    return render(request,"MyApp1/index.html",{'content': teachers})
 
 def input_view(request):
     teachers = teacher.objects.all
-   
+    selected = teacher.objects.filter(id__in=removals)
+
+
     if 'submit' in request.POST:
         form = InputForm(request.POST)
         if form.is_valid():
@@ -52,7 +55,7 @@ def input_view(request):
         return redirect("index")
     else:
         form = InputForm()
-        return render(request, "MyApp1/input.html",{'form': form, 'content': teachers, 'removals': removals})
+        return render(request, "MyApp1/input.html",{'form': form, 'content': teachers, 'removals': removals, 'selected': selected})
 
 
 def pdfr_view(request):
@@ -114,6 +117,7 @@ def report(request):
 def fileUpload_view(request):
    unit = units.objects.all
    task = tasks.objects.all
+
    assessment = units.Assessment
    if 'save' in request.POST:
       form = UnitForm(request.POST)
