@@ -14,12 +14,21 @@ class InputForm(forms.ModelForm):
 class UnitForm(forms.ModelForm):
     class Meta:
         model = units
-        fields = ['Class', 'Unit', 'Description', 'Assessment', 'AdditionalInfo']
+        fields = ['Class', 'Unit', 'Description', 'AdditionalInfo']
 
 class TaskForm(forms.ModelForm):
     class Meta:
         model = tasks
-        fields = ['Task', 'DueDate', 'Weight']
+        fields = ['Task', 'DueDate', 'Weight', 'Unit']
+
+TaskFormSet = inlineformset_factory(
+    units,
+    tasks,
+    fields=['Task', 'DueDate', 'Weight', 'Unit'],
+    extra=5, # how many extra forms in the formset
+    can_delete=True
+)
+
 
 class pdfr(forms.ModelForm):
     class Meta:

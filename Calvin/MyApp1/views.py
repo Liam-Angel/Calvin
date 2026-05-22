@@ -5,19 +5,13 @@ from datetime import datetime
 from pypdf import PdfReader
 from pypdf import PdfWriter
 from reportlab.pdfgen import canvas
-from .models import teacher
-from .models import twin
-from .models import PDF
-from .models import units
-from .models import tasks
-from .forms import InputForm
-from .forms import pdfr
+from .models import teacher, twin, PDF, units, tasks
+from .forms import InputForm, pdfr, UnitForm, TaskFormSet
 from reportlab.platypus import Paragraph,Image,Table 
 from django.http import FileResponse 
 from django.contrib.staticfiles.storage import staticfiles_storage 
 from io import BytesIO
-from .forms import UnitForm
-from .forms import TaskForm
+
 
 removals = []
 removals2 = []
@@ -120,16 +114,19 @@ def fileUpload_view(request):
    unit = units.objects.all
    task = tasks.objects.all
 
-   assessment = units.Assessment
+
    if 'save' in request.POST:
       form = UnitForm(request.POST)
-      form2 = TaskForm(request.POST)
-      if form.is_valid() and form2.is_valid():
+      if form.is_valid():
           print('saving')
           form.save()
-          form2.save()
-    
 
+   if 'save2' in request.POST:
+      formset = TaskFormSet(request.POST)
+      if formset.is_valid():
+          print('saving')
+          formset.save()
+      
 
    if 'delete' in request.POST:
        id = request.POST.get("delete")
@@ -137,13 +134,10 @@ def fileUpload_view(request):
            entry = units.objects.get(id=id)
            entry.delete()
 
-   
-   
-
    if 'back' in request.POST:
        removals2.clear
        return redirect("index")
    else:
        form = UnitForm()
-       form2 = TaskForm
-       return render(request, "myapp1/fileupload.html",{'form': form, 'form2': form2, 'unit': unit, 'task': task, 'assessment': assessment})
+       formset = TaskFormSet()
+       return render(request, "myapp1/fileupload.html",{'form': form, 'formset': formset, 'unit': unit, 'task': task,})

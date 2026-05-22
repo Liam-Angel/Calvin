@@ -9,33 +9,40 @@
     <form action="" method="post" autocomplete="off">
         {% csrf_token %}
         {{ form.as_p }}
-
+        <input type="submit" name="save" value="save">
+        {% for taskform in formset %}
         <table>
+            <tr>
+                <td>Unit</td>
+                <td>{{taskform.Unit}}</td>
+            </tr>
             <tr>
                 <td>Task</td>
                 <td>DueDate</td>
                 <td>Weight %</td>
             </tr>
             <tr>
-                <td>{{form2.Task}}</td>
-                <td>{{form2.DueDate}}</td>
-                <td>{{form2.Weight}}</td>
+                <td>{{taskform.Task}}</td>
+                <td>{{taskform.DueDate}}</td>
+                <td>{{taskform.Weight}}</td>
             </tr>
         </table>
+        {% endfor %}
         <input type="submit" name="back" value="back">
-        <input type="submit" name="save" value="save">
-        {% if unit %}
-            {% for item in unit %}
-            <div class="container">
-                <div>{{item.Class}}</div>
-                <div>{{item.Unit}}</div>
-                <div>{{item.Description}}</div>
-                <div>{{item.Assessment}}</div>
-                <input type="submit" name="delete" value="{{item.id}}">
-            </div>
-        
+        <input type="submit" name="save2" value="save2">
 
-            {% endfor %}
+        {% if unit %}
+        {% for item in unit %}
+        <div class="container">
+            <div>{{item.Class}}</div>
+            <div>{{item.Unit}}</div>
+            <div>{{item.Description}}</div>
+            <div>{{item.Assessment}}</div>
+            <input type="submit" name="delete" value="{{item.id}}">
+        </div>
+
+
+        {% endfor %}
         {% else %}
         <strong>No data!!</strong>
         {% endif %}
