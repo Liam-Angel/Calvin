@@ -110,21 +110,16 @@ def report(request):
 
     return response
 
-def fileUpload_view(request):
-   unit = units.objects.all
+def fileUpload_view(request, pk):
+   unit = units.objects.get(pk=pk)
    task = tasks.objects.all
 
-
    if 'save' in request.POST:
-      form = UnitForm(request.POST)
-      if form.is_valid():
+      form = UnitForm(request.POST, instance=unit)
+      formset = TaskFormSet(request.POST, instance=unit)
+      if form.is_valid() and formset.is_valid():
           print('saving')
           form.save()
-
-   if 'save2' in request.POST:
-      formset = TaskFormSet(request.POST)
-      if formset.is_valid():
-          print('saving')
           formset.save()
       
 
@@ -138,6 +133,25 @@ def fileUpload_view(request):
        removals2.clear
        return redirect("index")
    else:
+       form = UnitForm(instance=unit)
+       formset = TaskFormSet(instance=unit)
+       return render(request, "myapp1/fileupload.html",{'form': form, 'formset': formset, 'unit': unit, 'task': task})
+
+def addUnit_view(request):
+   unit = units.objects.all
+   task = tasks.objects.all
+
+
+   if 'save' in request.POST:
+      form = UnitForm(request.POST)
+      if form.is_valid():
+          print('saving')
+          form.save()
+
+   if 'back' in request.POST:
+       removals2.clear
+       return redirect("index")
+   else:
        form = UnitForm()
-       formset = TaskFormSet()
-       return render(request, "myapp1/fileupload.html",{'form': form, 'formset': formset, 'unit': unit, 'task': task,})
+       return render(request, "myapp1/addUnit.html",{'form': form, 'unit': unit, 'task': task,})
+

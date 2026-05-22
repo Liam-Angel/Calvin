@@ -10,7 +10,8 @@ urlpatterns = [
     re_path(r'^home$', MyApp1.views.index, name='index'),
     re_path(r'input', MyApp1.views.input_view, name='input'),
     re_path(r'pdfr', MyApp1.views.pdfr_view, name='pdfr'),
-    re_path(r'fileUpload', MyApp1.views.fileUpload_view, name='fileUpload'),
+    path('fileUpload/<int:pk>/', MyApp1.views.fileUpload_view, name='fileUpload'),
+    re_path(r'addUnit', MyApp1.views.addUnit_view, name='addUnit'),
     path('report/', MyApp1.views.report, name='report'),
 
 ]

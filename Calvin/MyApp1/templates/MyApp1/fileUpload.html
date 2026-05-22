@@ -8,14 +8,15 @@
     <h2>Create Unit Outline</h2>
     <form action="" method="post" autocomplete="off">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" name="save" value="save">
+        <div class="container">
+            <div>{{form.Class}}</div>
+            <div>{{form.Unit}}</div>
+            <div>{{form.Description}}</div>
+            <input type="submit" name="delete" value="{{item.id}}">
+        </div>
+
         {% for taskform in formset %}
         <table>
-            <tr>
-                <td>Unit</td>
-                <td>{{taskform.Unit}}</td>
-            </tr>
             <tr>
                 <td>Task</td>
                 <td>DueDate</td>
@@ -29,10 +30,8 @@
         </table>
         {% endfor %}
         <input type="submit" name="back" value="back">
-        <input type="submit" name="save2" value="save2">
+        <input type="submit" name="save" value="save">
 
-        {% if unit %}
-        {% for item in unit %}
         <div class="container">
             <div>{{item.Class}}</div>
             <div>{{item.Unit}}</div>
@@ -41,11 +40,7 @@
             <input type="submit" name="delete" value="{{item.id}}">
         </div>
 
-
-        {% endfor %}
-        {% else %}
-        <strong>No data!!</strong>
-        {% endif %}
+    
     </form>
 </body>
 </html>

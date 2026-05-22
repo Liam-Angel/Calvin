@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Django Form</title>
+</head>
+<body>
+    <h2>Create Unit Outline</h2>
+    <form action="" method="post" autocomplete="off">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Class</td>
+                <td>Unit</td>
+            </tr>
+            <tr>
+                <td>{{form.Class}}</td>
+                <td>{{form.Unit}}</td>
+            </tr>
+        </table>
+        <input type="submit" name="save" value="save">
+        <input type="submit" name="back" value="back">
+
+        {% if unit %}
+        {% for item in unit %}
+        <div class="container">
+            <div>{{item.Class}}</div>
+            <div>{{item.Unit}}</div>
+            <p> <a href="/EditUnit/{{item.id}}/">Edit Unit</a></p>
+            <input type="submit" name="delete" value="{{item.id}}">
+        </div>
+
+
+        {% endfor %}
+        {% else %}
+        <strong>No data!!</strong>
+        {% endif %}
+    </form>
+</body>
+</html>
